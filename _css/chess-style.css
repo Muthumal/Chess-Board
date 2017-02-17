@@ -1,0 +1,33 @@
+td {
+    width:70px;
+    height: 70px;    
+}
+/*
+span {
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+}
+*/
+img{
+    height:90%;
+    width: 90%;
+    text-align:center;
+    
+}
+.black-block{
+    background-color: #1E8449  ;
+}
+.white-block{
+    background-color: white;
+}
+ul{
+    width: 100%;
+    height: 100%;
+}
+li{
+    width: 70px;
+    height: 70px;
+    float: left;
+    float: right;
+}

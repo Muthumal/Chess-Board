@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <title>Page Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet"  type="text/css" href="_css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="_css/chess-style.css">
+<!--
+        <script src="_js/jquery-ui.js" type="text/javascript"></script>
+        <script src="_js/jquery.js" type="text/javascript"></script>
+-->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+        <script type="text/javascript" src="_js/chess-comand.js"></script>
+    </head>
+    <body class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <ul id="gallery container">
+                    <li class="ccc">
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="col-md-6" style="background-color:gray">
+                <h1>Chess Bord</h1>
+                <table id="bord-table">
+                    <tr>
+                        <td class="black-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b rook" src="_img/b5.png"></td>
+                        <td class="white-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b knight" src="_img/b4.png"></td>
+                        <td class="black-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b bishop" src="_img/b3.png"></td>
+                        <td class="white-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b queen" src="_img/b2.png"></td>
+                        <td class="black-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b king" src="_img/b1.png"></td>
+                        <td class="white-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b bishop" src="_img/b3.png"></td>
+                        <td class="black-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b knight" src="_img/b4.png"></td>
+                        <td class="white-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b rook" src="_img/b5.png"></td>
+                                        
+                    </tr>
+                    <tr>                    
+                        <td class="white-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b pown" src="_img/b6.png"></td>
+                        <td class="black-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b pown" src="_img/b6.png"></td>
+                        <td class="white-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b pown" src="_img/b6.png"></td>
+                        <td class="black-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b pown" src="_img/b6.png"></td>
+                        <td class="white-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b pown" src="_img/b6.png"></td>
+                        <td class="black-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b pown" src="_img/b6.png"></td>
+                        <td class="white-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b pown" src="_img/b6.png"></td>
+                        <td class="black-block"><img id="b" class="chess-pices ui-widget-content ui-corner-tr b pown" src="_img/b6.png"></td>
+                        
+                    </tr>
+                    <tr>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>                        
+                    </tr>
+                    <tr>                        
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                    </tr>
+                    <tr>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>                        
+                    </tr>
+                    <tr>                        
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                        <td class="white-block"></td>
+                        <td class="black-block"></td>
+                    </tr>
+                    <tr>                    
+                        <td class="black-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w pown" src="_img/w6.png"></td>
+                        <td class="white-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w pown" src="_img/w6.png"></td>
+                        <td class="black-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w pown" src="_img/w6.png"></td>
+                        <td class="white-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w pown" src="_img/w6.png"></td>
+                        <td class="black-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w pown" src="_img/w6.png"></td>
+                        <td class="white-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w pown" src="_img/w6.png"></td>
+                        <td class="black-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w pown" src="_img/w6.png"></td>
+                        <td class="white-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w pown" src="_img/w6.png"></td>
+                        
+                    </tr>
+                    <tr>
+                        <td class="white-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w rook" src="_img/w5.png"></td>
+                        <td class="black-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w knight" src="_img/w4.png"></td>
+                        <td class="white-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w bishop" src="_img/w3.png"></td>
+                        <td class="black-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w king" src="_img/w1.png"></td>
+                        <td class="white-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w queen" src="_img/w2.png"></td>
+                        <td class="black-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w bishop" src= "_img/w3.png"></td>
+                        <td class="white-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w knight" src="_img/w4.png"></td>   <td class="black-block"><img id="w" class="chess-pices ui-widget-content ui-corner-tr w rook" src="_img/w5.png"></td>
+                              
+                    </tr>
+                    
+                    
+                </table>
+            </div>
+            <div class="col-md-3"></div>
+            
+        </div>
+    </body>
+</html>
