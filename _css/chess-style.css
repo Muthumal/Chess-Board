@@ -1,6 +1,14 @@
-td {
+td.black-block , td.white-block {
     width:70px;
-    height: 70px;    
+    height: 70px;
+    text-align: center;
+}
+h1{
+    text-align: center;
+}
+td.black{
+    height: 50px;
+    width: 50px;
 }
 /*
 span {
@@ -10,9 +18,10 @@ span {
 }
 */
 img{
-    height:90%;
-    width: 90%;
+    height:55px;
+    width: 55px;
     text-align:center;
+    
     
 }
 .black-block{
@@ -21,13 +30,21 @@ img{
 .white-block{
     background-color: white;
 }
-ul{
-    width: 100%;
-    height: 100%;
+
+table, th, td {
+   border: 4px groove #1F3D2A;
 }
-li{
-    width: 70px;
-    height: 70px;
-    float: left;
-    float: right;
+table {
+    margin-bottom: 15px;
+}
+#ccc{
+    height: 70px
+}
+#b{
+    position: relative;
+    z-index:10;
+}
+#w{
+    position: relative;
+    z-index: 10;
 }

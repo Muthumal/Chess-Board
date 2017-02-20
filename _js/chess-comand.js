@@ -1,13 +1,13 @@
-var $table=$(".black-block");
+var turn=1;
 $( document ).ready(function() {
-    $("img","table").draggable(
-    {
-      revert: "invalid", // when not dropped, the item will revert back to its initial position
-      grid: [ 70, 70 ],
-//        containment:"#bord-table"
-    }
-    );    
     
+    $("img.w").draggable(
+            {
+              revert: "invalid", // when not dropped, the item will revert back to its initial position
+              grid: [ 70, 70 ],
+        //        containment:"#bord-table"
+            }
+            ); 
 //    $(".black-block").droppable({
 //      accept: "img"     
 //    });
@@ -15,6 +15,7 @@ $( document ).ready(function() {
 //    for king
     $(".king").on('mouseenter mousedown',(function(){
         var id=$(this).attr("id");
+        
         var row_index = $(this).parent().parent().index();
         var col_index = $(this).parent().index();
         for(var i=-1;i<2;i++){
@@ -35,22 +36,47 @@ $( document ).ready(function() {
 
         var row_index = $(this).parent().parent().index();
         var col_index = $(this).parent().index();
-        var x;
+        
 
         if(id=="b"){              
-            x=1;
-        }else{
-            x=-1;
-        }
-        console.log(row_index+x);
-        for(var i=-1;i<2;i++){
-            if((row_index)<0|(col_index)<0|(col_index)>8){
-                continue;
+            if(row_index==1){
+                p_radar($('#bord-table tr:eq(' + (row_index+2) + ') td:eq(' + (col_index) + ')'),id);
+            
             }
-            console.log(i,' ',x);
-            b_radar($('#bord-table tr:eq(' + (row_index+x) + ') td:eq(' + (col_index+i) + ')'),id);
-
+            p_radar($('#bord-table tr:eq(' + (row_index+1) + ') td:eq(' + (col_index) + ')'),id);
+            var l_cell=$('#bord-table tr:eq(' + (row_index+1) + ') td:eq(' + (col_index-1) + ')').children().attr("id");
+            if(l_cell!=null & ((row_index+1)>=0&(col_index-1)>=0&(col_index-1)<8)){
+                 b_radar($('#bord-table tr:eq(' + (row_index+1) + ') td:eq(' + (col_index-1) + ')'),id);           
+            }
+            var r_cell=$('#bord-table tr:eq(' + (row_index+1) + ') td:eq(' + (col_index+1) + ')').children().attr("id");
+            if(r_cell!=null & ((row_index+1)>=0&(col_index+1)>=0&(col_index+1)<8)){
+                 b_radar($('#bord-table tr:eq(' + (row_index+1) + ') td:eq(' + (col_index+1) + ')'),id);           
+            }
+            
+        }else{
+            if(row_index==6){
+                p_radar($('#bord-table tr:eq(' + (row_index-2) + ') td:eq(' + (col_index) + ')'),id);
+            
+            }
+            p_radar($('#bord-table tr:eq(' + (row_index-1) + ') td:eq(' + (col_index) + ')'),id);
+            var l_cell=$('#bord-table tr:eq(' + (row_index-1) + ') td:eq(' + (col_index-1) + ')').children().attr("id");
+            if(l_cell!=null & ((row_index-1)>=0&(col_index-1)>=0&(col_index-1)<8)){
+                 b_radar($('#bord-table tr:eq(' + (row_index-1) + ') td:eq(' + (col_index-1) + ')'),id);           
+            }
+            var r_cell=$('#bord-table tr:eq(' + (row_index-1) + ') td:eq(' + (col_index+1) + ')').children().attr("id");
+            if(r_cell!=null & ((row_index-1)>=0&(col_index+1)>=0&(col_index+1)<8)){
+                 b_radar($('#bord-table tr:eq(' + (row_index-1) + ') td:eq(' + (col_index+1) + ')'),id);           
+            }
         }
+       // console.log(row_index+x);
+//        for(var i=-1;i<2;i++){
+//            if((row_index)<0|(col_index)<0|(col_index)>=8){
+//                continue;
+//            }
+//            console.log(i,' ',x);
+//            b_radar($('#bord-table tr:eq(' + (row_index+x) + ') td:eq(' + (col_index+i) + ')'),id);
+//
+//        }
         
     }));
     
@@ -191,18 +217,26 @@ $( document ).ready(function() {
 
 function b_radar(cell,id){
     var op_nm = $(cell).children().attr("id");
+    console.log($(cell).children(),"hi log")
     
 	// Identify intruder	
    		if (op_nm!=null) {
    	   //Enemy
 	   		if (op_nm != id) {
 	   			$( cell ).css("background-color", "#ff6666");
+//                if($(cell).children("img.king")){
+//                            //$("#check").html("Check mate...");
+//                            return;
+//                        }
                 $( cell ).droppable({
-                    accept: "img",
+                    accept: "#b,#w",
                     drop: function( e, ui ) {
                         
-                        $(".ccc").append($(cell).children().detach().html({'top':'', 'left':''}));
-                        $(e.target).append($(ui.draggable).detach().css({'top':'', 'left':''}));
+                        //$(cell).children().remove("img");
+                        $(cell).children().detach().appendTo($(".black"));
+                        $(e.target).append($(ui.draggable).detach().css({'top':'', 'left':''})).appendTo(cell);
+                        //$(ui.draggable).detach.css({ top: 0, left: 0, right: 0, bottom: 0 }).appendTo(cell);
+                         changeTurn(-1);
                       }
                     });
 	           }
@@ -214,18 +248,65 @@ function b_radar(cell,id){
 	   		}	
 	   //No_one
 	   	else {
-	   			$( cell ).css("background-color", "#90ee90");
+	   			$( cell ).css("background-color", "#3AEAE2");
                 $( cell ).droppable({
                     accept: "img",
                     drop: function( e, ui ) {
-                        $(e.target).append($(ui.draggable).detach().css({'top':'', 'left':''}));
+                        $(e.target).append($(ui.draggable).detach().css({'top':'', 'left':''})).appendTo(cell);
+                         changeTurn(-1);
                       }
                     });
 	   			return false;	
 	   		}	 
     }
-function dropPiese($item){
+function p_radar(cell,id){
+    var op_nm = $(cell).children().attr("id");
     
+	// Identify intruder	
+   		if (op_nm==null) {
+            
+   	            $( cell ).css("background-color", "#3AEAE2");
+                $( cell ).droppable({
+                    accept: "img",
+                    drop: function( e, ui ) {
+                        $(e.target).append($(ui.draggable).detach().css({'top':'', 'left':''})).appendTo(cell);
+                        changeTurn(-1);
+                      }
+                    });
+	   			return false;	
+	   		}	
+	    
+    }
+function changeTurn(num){
+    turn=turn*num;
+    console.log(turn);
+    //$(".bord-table").css("-webkit-transform: rotate(270deg);-moz-transform: rotate(270deg);-o-transform: rotate(270deg);");
+    if(turn==1){
+        $("img.b").draggable('disable');
+        $("img.b").css("z-index",10);
+        $("img.w").css("z-index",199999);
+        $("img.w").draggable(
+            {                
+              revert: "invalid", // when not dropped, the item will revert back to its initial position
+              grid: [ 70, 70 ],
+                disabled: false
+        //        containment:"#bord-table"
+            }
+            ); 
+    }else{
+        $("img.w").draggable('disable'); 
+        $("img.w").css("z-index",10);
+        $("img.b").css("z-index",199999);
+        
+        $("img.b").draggable(
+            {
+              revert: "invalid", // when not dropped, the item will revert back to its initial position
+              grid: [ 70, 70 ],
+                disabled: false
+        //        containment:"#bord-table"
+            }
+            ); 
+    }  
 }
 
 
